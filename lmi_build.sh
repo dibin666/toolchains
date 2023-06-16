@@ -36,7 +36,7 @@ FINAL_KERNEL_ZIP=AnyKernel3-perf-lmi-${current_time}.zip
 export KERNEL_DIR=$(pwd)
 
 # 内核 defconfig 文件
-export KERNEL_DEFCONFIG=loire_kugo_defconfig
+export KERNEL_DEFCONFIG=vendor/lmi_user_defconfig
 
 # 编译临时目录，避免污染根目录
 export OUT=out
