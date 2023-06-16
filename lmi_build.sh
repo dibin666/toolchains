@@ -2,7 +2,7 @@
 
 # 添加 Anykernel3
 rm -rf AnyKernel3
-git clone --depth=1 https://github.com/dibin666/AnyKernel3 -b kugo
+git clone --depth=1 https://github.com/dibin666/AnyKernel3 -b lmi
 
 # 添加 KernelSU
 read -p "是否添加 KernelSU？(y/n): " choice
