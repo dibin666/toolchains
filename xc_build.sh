@@ -42,7 +42,7 @@ export KERNEL_DEFCONFIG=loire_kugo_defconfig
 export OUT=out
 
 # clang 和 gcc 绝对路径
-export CLANG_PATH=/mnt/pt2/kernel/tool/clang17
+export CLANG_PATH=/mnt/pt2/kernel/tool/clang12
 export PATH=${CLANG_PATH}/bin:${PATH}
 export GCC_PATH=/mnt/pt2/kernel/tool/gcc
 
