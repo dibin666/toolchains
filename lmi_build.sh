@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# 记录开始和结束的时间
-start_time=$(date +%s)
-end_time=$(date +%s)
-
-# 计算总共花费的时间
-elapsed_time=$((end_time - start_time))
-
 # 添加 Anykernel3
 rm -rf AnyKernel3
 git clone --depth=1 https://github.com/dibin666/AnyKernel3 -b lmi
@@ -49,19 +42,21 @@ export KERNEL_DEFCONFIG=vendor/lmi_user_defconfig
 export OUT=out
 
 # clang 和 gcc 绝对路径
-export CLANG_PATH=/mnt/disk/tool2/prelude-clang
+export CLANG_PATH=/mnt/disk2/tool2/clang12
 export PATH=${CLANG_PATH}/bin:${PATH}
-# export GCC_PATH=/mnt/pt2/kernel/tool/gcc
-export CLANG_TRIPLE=aarch64-linux-gnu-
-export SUBARCH=arm64
+export GCC_PATH=/mnt/disk2/tool2/gcc
 
 # 编译参数
 export DEF_ARGS="O=${OUT} \
 				ARCH=arm64 \
                                 CC=clang \
-				CXX=clang++ \
 				CROSS_COMPILE=${CLANG_PATH}/bin/aarch64-linux-gnu- \
                                 CROSS_COMPILE_ARM32=${CLANG_PATH}/bin/arm-linux-gnueabi- \
+				NM=llvm-nm \
+    				AR=llvm-ar \
+        			OBJCOPY=llvm-objcopy \
+        			OBJDUMP=llvm-objdump \
+        			STRIP=llvm-strip \
 				LD=ld.lld"
 
 export BUILD_ARGS="-j$(nproc --all) ${DEF_ARGS}"
@@ -90,7 +85,7 @@ cd $ANYKERNEL3_DIR/
 zip -r $FINAL_KERNEL_ZIP * -x README $FINAL_KERNEL_ZIP
 
 # 复制打包好的 Zip 文件到指定的目录
-cp $ANYKERNEL3_DIR/$FINAL_KERNEL_ZIP ../../out
+# cp $ANYKERNEL3_DIR/$FINAL_KERNEL_ZIP ../../out
 
 echo "编译耗时：$elapsed_time 秒"
 
@@ -103,7 +98,7 @@ CHANNEL_ID="-1001918020760"
 FILE_PATH="$FINAL_KERNEL_ZIP"
 
 # 要发送的消息内容
-MESSAGE="LMI kernel build successfully! 编译耗时：$elapsed_time 秒"
+MESSAGE="LMI kernel build successfully!"
 
 # 发送API请求，上传文件到Teleram频道
 curl -F chat_id="$CHANNEL_ID" -F document=@"$FILE_PATH" "https://api.telegram.org/bot$TOKEN/sendDocument"
@@ -116,4 +111,5 @@ curl -s -X POST "https://api.telegram.org/bot$TOKEN/sendMessage" \
 # 清理目录
 cd ..
 rm -rf AnyKernel3
+rm -rf KernelSU
 rm -rf out
