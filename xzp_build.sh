@@ -24,7 +24,7 @@ if [ "$choice" = "y" ]; then
 fi
 
 # 当前时间
-current_time=$(date +"%Y-%m-%d-%H")
+current_time=$(date +"%Y-%m-%d-%H-%s")
 
 # AnyKernel3 路径
 ANYKERNEL3_DIR=$PWD/AnyKernel3/
@@ -42,9 +42,9 @@ export KERNEL_DEFCONFIG=lineage-msm8998-yoshino-maple_dsds_defconfig
 export OUT=out
 
 # clang 和 gcc 绝对路径
-export CLANG_PATH=/mnt/pt2/kernel/tool/clang12
+export CLANG_PATH=/mnt/disk2/tool2/clang12
 export PATH=${CLANG_PATH}/bin:${PATH}
-export GCC_PATH=/mnt/pt2/kernel/tool/gcc
+export GCC_PATH=/mnt/disk2/tool2/gcc
 
 # 编译参数
 export DEF_ARGS="O=${OUT} \
@@ -81,7 +81,7 @@ cd $ANYKERNEL3_DIR/
 zip -r $FINAL_KERNEL_ZIP * -x README $FINAL_KERNEL_ZIP
 
 # 复制打包好的 Zip 文件到指定的目录
-cp $ANYKERNEL3_DIR/$FINAL_KERNEL_ZIP ../../out
+# cp $ANYKERNEL3_DIR/$FINAL_KERNEL_ZIP ../../out
 
 # 上传打包好的 Zip 文件到 Telegram 频道
 # 设置Telegram Bot的API令牌和频道ID
@@ -104,5 +104,6 @@ curl -s -X POST "https://api.telegram.org/bot$TOKEN/sendMessage" \
 
 # 清理目录
 cd ..
+rm -rf KernelSU
 rm -rf AnyKernel3
 rm -rf out
