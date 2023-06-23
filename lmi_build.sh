@@ -50,8 +50,9 @@ export GCC_PATH=/mnt/disk2/tool2/gcc
 export DEF_ARGS="O=${OUT} \
 				ARCH=arm64 \
                                 CC=clang \
-				CROSS_COMPILE=${CLANG_PATH}/bin/aarch64-linux-gnu- \
-                                CROSS_COMPILE_ARM32=${CLANG_PATH}/bin/arm-linux-gnueabi- \
+				CLANG_TRIPLE=aarch64-linux-gnu- \
+				CROSS_COMPILE=${GCC_PATH}/aarch64-linux-android-4.9/bin/aarch64-linux-android- \
+                                CROSS_COMPILE_ARM32=${GCC_PATH}/arm-linux-androideabi-4.9/bin/arm-linux-androideabi- \
 				NM=llvm-nm \
     				AR=llvm-ar \
         			OBJCOPY=llvm-objcopy \
