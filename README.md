@@ -6,3 +6,6 @@ apt install python bc bison build-essential ccache curl flex g++-multilib gcc-mu
 
 # prelude-clang
 https://gitlab.com/jjpprrrr/prelude-clang
+
+# KernelSU 相关
+https://github.com/F-19-F/android_kernel_oneplus_msm8998/commit/3df9df42a659f489091445d813b8c0477215ae3a  security/selinux/hooks.c
