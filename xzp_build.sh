@@ -85,8 +85,8 @@ zip -r $FINAL_KERNEL_ZIP * -x README $FINAL_KERNEL_ZIP
 
 # 上传打包好的 Zip 文件到 Telegram 频道
 # 设置Telegram Bot的API令牌和频道ID
-TOKEN="6188260032:AAEAegXX69-U8nZiEsykwr0BrxBdrpaTF0c"
-CHANNEL_ID="-1001918020760"
+TOKEN=""
+CHANNEL_ID=""
 
 # 要上传的文件路径
 FILE_PATH="$FINAL_KERNEL_ZIP"
