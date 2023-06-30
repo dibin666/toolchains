@@ -1,6 +1,3 @@
-# Relese 状态
-LMI：[![Release Stats](https://github-release.dibin94.eu.org/badge.svg)](https://github-release.dibin94.eu.org/?user=dibin666&repo=kernel_xiaomi_lmi-ksu)
-
 # toolchains
 编译内核所需要的文件（自留）
 
