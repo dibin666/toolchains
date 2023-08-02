@@ -11,6 +11,6 @@ https://gitlab.com/jjpprrrr/prelude-clang
 https://github.com/ZyCromerZ/Clang
 
 # KernelSU 相关
-https://github.com/F-19-F/android_kernel_oneplus_msm8998/commit/3df9df42a659f489091445d813b8c0477215ae3a  security/selinux/hooks.c
+https://github.com/F-19-F/android_kernel_oneplus_msm8998/commit/3df9df42a659f489091445d813b8c0477215ae3a  security/selinux/hooks.c  (低于Linux 4.9的内核需修补)
 
 
