@@ -32,6 +32,9 @@ ANYKERNEL3_DIR=$PWD/AnyKernel3/
 # 编译完成后内核名字
 FINAL_KERNEL_ZIP=AnyKernel3-whatwursts-maple_dsds-${current_time}.zip
 
+# 编译完内核输出目录
+export OUT_PATH=/mnt/disk/out
+
 # 内核工作目录
 export KERNEL_DIR=$(pwd)
 
@@ -81,26 +84,7 @@ cd $ANYKERNEL3_DIR/
 zip -r $FINAL_KERNEL_ZIP * -x README $FINAL_KERNEL_ZIP
 
 # 复制打包好的 Zip 文件到指定的目录
-# cp $ANYKERNEL3_DIR/$FINAL_KERNEL_ZIP ../../out
-
-# 上传打包好的 Zip 文件到 Telegram 频道
-# 设置Telegram Bot的API令牌和频道ID
-TOKEN=""
-CHANNEL_ID=""
-
-# 要上传的文件路径
-FILE_PATH="$FINAL_KERNEL_ZIP"
-
-# 要发送的消息内容
-MESSAGE="maple_dsds kernel build successfully!"
-
-# 发送API请求，上传文件到Teleram频道
-curl -F chat_id="$CHANNEL_ID" -F document=@"$FILE_PATH" "https://api.telegram.org/bot$TOKEN/sendDocument"
-
-# 发送API请求，发送消息到Telegram频道
-curl -s -X POST "https://api.telegram.org/bot$TOKEN/sendMessage" \
-    -d "chat_id=$CHANNEL_ID" \
-    -d "text=$MESSAGE"
+cp $ANYKERNEL3_DIR/$FINAL_KERNEL_ZIP ${OUT_PATH}
 
 # 清理目录
 cd ..
